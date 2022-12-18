@@ -31,7 +31,13 @@ class _HomePageState extends State<HomePage> {
                     width: 30,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        border: Border.all(color: Colors.orange, width: 2.0)),
+                        image: const DecorationImage(
+                            image: AssetImage("assets/me profile 1.png"),
+                            fit: BoxFit.cover),
+                        border: Border.all(
+                          color: Colors.orange,
+                          width: 2.0,
+                        )),
                   ),
                   const SizedBox(width: 10),
                   Column(
