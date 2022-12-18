@@ -4,10 +4,7 @@ import 'mlh1.dart/blind.dart';
 import 'mlh1.dart/home.dart';
 import 'mlh1.dart/login.dart';
 
-// import 'package:trial_space/passingArguments.dart';
 
-// passing arguments
-// mlh
 
 void main() {
   runApp(const MyApp());
@@ -21,13 +18,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Testing space',
-      // home: MyHomePage(),
-      // routes: {
-      //   '/': (context) => FirstPage(
-      //         hex: const Color(0xff443a49),
-      //       ),
-      //   '/second': (context) => const SecondPage()
-      // },
       routes: {
         '/': (context) => const PageOne(),
         '/home': (context) => const HomePage(),
