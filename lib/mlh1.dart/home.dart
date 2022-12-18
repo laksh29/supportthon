@@ -10,11 +10,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final _headingFont = const TextStyle(
-      fontSize: 20, fontWeight: FontWeight.w600, color: Color(0xff24285B));
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -33,7 +31,13 @@ class _HomePageState extends State<HomePage> {
                     width: 30,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        border: Border.all(color: Colors.orange, width: 2.0)),
+                        image: const DecorationImage(
+                            image: AssetImage("assets/me profile 1.png"),
+                            fit: BoxFit.cover),
+                        border: Border.all(
+                          color: Colors.orange,
+                          width: 2.0,
+                        )),
                   ),
                   const SizedBox(width: 10),
                   Column(
@@ -56,12 +60,13 @@ class _HomePageState extends State<HomePage> {
               // const SizedBox(height: 50),
               const Spacer(),
               options(context, "assets/sign language.png", "Sign Language",
-                  "/sign"),
+                  "/sign", height),
               const Spacer(),
               options(context, "assets/handicapped.png", "Handicapped",
-                  "/handicapped"),
+                  "/handicapped", height),
               const Spacer(),
-              options(context, "assets/calm music.png", "Calm Music", "/music"),
+              options(context, "assets/calm music.png", "Calm Music", "/music",
+                  height),
             ],
           ),
         ),
@@ -70,25 +75,28 @@ class _HomePageState extends State<HomePage> {
   }
 
 // ---------- GESTURE DETECTOR -------------------
-  GestureDetector options(
-      BuildContext context, String picture, String heading, String next) {
+  GestureDetector options(BuildContext context, String picture, String heading,
+      String next, double height) {
     return GestureDetector(
       child: Container(
         padding: const EdgeInsets.all(20.0),
-        height: 180,
+        height: height / 4.178,
         width: MediaQuery.of(context).size.width / 2,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25), color: Colors.blue),
         child: Column(children: [
           Container(
-            height: 80,
+            height: height / 9.4,
             decoration: BoxDecoration(
                 image: DecorationImage(image: AssetImage(picture))),
           ),
-          const SizedBox(height: 30),
+          SizedBox(height: height / 25.06),
           Text(
             heading,
-            style: _headingFont,
+            style: TextStyle(
+                fontSize: height / 37.6,
+                fontWeight: FontWeight.w600,
+                color: const Color(0xff24285B)),
             textAlign: TextAlign.center,
           ),
         ]),
@@ -188,8 +196,6 @@ class _SignLanguageState extends State<SignLanguage> {
     );
   }
 }
-
-
 
 // ------------DEAF--------------------
 

@@ -90,7 +90,10 @@ class _BlindState extends State<Blind> {
                 ),
                 const SizedBox(height: 10),
                 ElevatedButton(
-                    onPressed: () {}, child: const Text("Full Screen")),
+                    onPressed: () {
+                      controller.toggleFullScreenMode();
+                    },
+                    child: const Text("Full Screen")),
                 const Spacer(),
                 // next button
                 SizedBox(
@@ -161,7 +164,16 @@ class QuestionWidget extends StatefulWidget {
 }
 
 class _QuestionWidgetState extends State<QuestionWidget> {
+  late PageController _controller;
   int _questionNumber = 1;
+  int _score = 0;
+  bool _isLocked = false;
+  @override
+  void initState() {
+    _controller = PageController(initialPage: 0);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -178,12 +190,15 @@ class _QuestionWidgetState extends State<QuestionWidget> {
           Expanded(
               child: PageView.builder(
             physics: const NeverScrollableScrollPhysics(),
+            controller: _controller,
             itemCount: question.length,
             itemBuilder: ((context, index) {
               final _question = question[index];
               return buildQuestion(_question);
             }),
           )),
+          _isLocked ? buildElevatedButton() : const SizedBox.shrink(),
+          // buildElevatedButton(),
           const SizedBox(height: 20),
         ],
       ),
@@ -211,11 +226,39 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                 question.isLocked = true;
                 question.selectedOption = option;
               });
+              _isLocked = question.isLocked;
+              if (question.selectedOption!.isCorrect) {
+                _score++;
+              }
             }
           },
         ))
       ],
     );
+  }
+
+  ElevatedButton buildElevatedButton() {
+    return ElevatedButton(
+        onPressed: () {
+          if (_questionNumber < question.length) {
+            _controller.nextPage(
+                duration: const Duration(milliseconds: 250),
+                curve: Curves.easeInExpo);
+            setState(() {
+              _questionNumber++;
+              _isLocked = false;
+            });
+          } else {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ResultPage(score: _score)));
+          }
+          ;
+        },
+        child: Text(_questionNumber < question.length
+            ? "Next Page"
+            : "See the Result"));
   }
 }
 
@@ -269,5 +312,21 @@ class OptionWidget extends StatelessWidget {
       }
     }
     return Colors.grey.shade300;
+  }
+}
+
+// ----------- RESULT PAGE ------------
+class ResultPage extends StatelessWidget {
+  const ResultPage({super.key, required this.score});
+  final int score;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Score Card")),
+      body: Center(
+        child: Text("You have scored $score/${question.length}"),
+      ),
+    );
   }
 }
