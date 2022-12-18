@@ -270,12 +270,12 @@ class OptionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => SingleChildScrollView(
-          child: Column(
-        children: question,
-        // children: question.options
-        //     .map((option) => buildOption(context, option))
-        //     .toList()),
-      ));
+        child: Column(
+            children: question.options
+                .map((option) => buildOption(context, option))
+                .toList()
+                .cast<Widget>()),
+      );
 
   buildOption(BuildContext context, Option option) {
     final color = getColorForOption(option, question);
