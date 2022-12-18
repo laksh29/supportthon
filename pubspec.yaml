@@ -75,6 +75,8 @@ flutter:
     - assets/deaf.png
     - assets/next_page.png
     - assets/me profile 1.png
+    - assets/apple white.png
+    - assets/google search.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

@@ -19,7 +19,7 @@ class _BlindState extends State<Blind> {
   void initState() {
     super.initState();
 
-    const url = "https://www.youtube.com/watch?v=GQyWIur03aw&t=12s";
+    const url = "https://www.youtube.com/watch?v=9GrK3P15TYU";
     controller = YoutubePlayerController(
       initialVideoId: YoutubePlayer.convertUrlToId(url)!,
       flags: const YoutubePlayerFlags(

@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text("Start-a-thon"),
+        title: const Text("Support-a-thon"),
       ),
       body: SafeArea(
           child: Center(

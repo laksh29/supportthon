@@ -33,7 +33,7 @@ class _PageOneState extends State<PageOne> {
                       color: Colors.teal)),
               const SizedBox(height: 20),
               const Text(
-                "Supporter",
+                "Supporting Stick",
                 style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
@@ -55,6 +55,8 @@ class _PageOneState extends State<PageOne> {
                       height: 50,
                       width: 50,
                       decoration: BoxDecoration(
+                          image: const DecorationImage(
+                              image: AssetImage("assets/google search.png")),
                           border: Border.all(
                               color: const Color(0xff39B995), width: 3),
                           shape: BoxShape.circle),
@@ -67,6 +69,10 @@ class _PageOneState extends State<PageOne> {
                       height: 50,
                       width: 50,
                       decoration: BoxDecoration(
+                          image: const DecorationImage(
+                            image: AssetImage("assets/apple white.png"),
+                            scale: 5,
+                          ),
                           border: Border.all(
                               color: const Color(0xff39B995), width: 3),
                           shape: BoxShape.circle),
