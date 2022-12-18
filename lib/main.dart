@@ -4,8 +4,6 @@ import 'mlh1.dart/blind.dart';
 import 'mlh1.dart/home.dart';
 import 'mlh1.dart/login.dart';
 
-
-
 void main() {
   runApp(const MyApp());
 }

@@ -263,7 +263,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
 }
 
 class OptionWidget extends StatelessWidget {
-  final question;
+  final Question question;
   final ValueChanged<Option> onClickedOption;
   const OptionWidget(
       {super.key, required this.question, required this.onClickedOption});
