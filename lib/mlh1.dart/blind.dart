@@ -263,19 +263,19 @@ class _QuestionWidgetState extends State<QuestionWidget> {
 }
 
 class OptionWidget extends StatelessWidget {
-  final question;
+  final Question question;
   final ValueChanged<Option> onClickedOption;
   const OptionWidget(
       {super.key, required this.question, required this.onClickedOption});
 
   @override
   Widget build(BuildContext context) => SingleChildScrollView(
-          child: Column(
-        children: question,
-        // children: question.options
-        //     .map((option) => buildOption(context, option))
-        //     .toList()),
-      ));
+        child: Column(
+            children: question.options
+                .map((option) => buildOption(context, option))
+                .toList()
+                .cast<Widget>()),
+      );
 
   buildOption(BuildContext context, Option option) {
     final color = getColorForOption(option, question);
