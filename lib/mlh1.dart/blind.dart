@@ -90,7 +90,10 @@ class _BlindState extends State<Blind> {
                 ),
                 const SizedBox(height: 10),
                 ElevatedButton(
-                    onPressed: () {}, child: const Text("Full Screen")),
+                    onPressed: () {
+                      controller.toggleFullScreenMode();
+                    },
+                    child: const Text("Full Screen")),
                 const Spacer(),
                 // next button
                 SizedBox(
